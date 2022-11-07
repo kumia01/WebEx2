@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\thien\\source\\repos\\WebEx2\\WebEx2\\WebEx2.csproj": {}
+    "C:\\Users\\thien\\Documents\\GitHub\\WebEx2\\WebEx2\\WebEx2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\thien\\source\\repos\\WebEx2\\WebEx2\\WebEx2.csproj": {
+    "C:\\Users\\thien\\Documents\\GitHub\\WebEx2\\WebEx2\\WebEx2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\thien\\source\\repos\\WebEx2\\WebEx2\\WebEx2.csproj",
+        "projectUniqueName": "C:\\Users\\thien\\Documents\\GitHub\\WebEx2\\WebEx2\\WebEx2.csproj",
         "projectName": "WebEx2",
-        "projectPath": "C:\\Users\\thien\\source\\repos\\WebEx2\\WebEx2\\WebEx2.csproj",
+        "projectPath": "C:\\Users\\thien\\Documents\\GitHub\\WebEx2\\WebEx2\\WebEx2.csproj",
         "packagesPath": "C:\\Users\\thien\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\thien\\source\\repos\\WebEx2\\WebEx2\\obj\\",
+        "outputPath": "C:\\Users\\thien\\Documents\\GitHub\\WebEx2\\WebEx2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\thien\\AppData\\Roaming\\NuGet\\NuGet.Config",
