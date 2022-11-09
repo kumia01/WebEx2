@@ -54,3 +54,11 @@
 2022-11-09T14:37:35.5154161+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
 (node:5208) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
  (5e676e0d)
+2022-11-09T15:18:10.0422943+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-11-09T15:18:10.0589897+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-11-09T15:18:10.0619254+01:00  [INF] Content root path: "C:\Users\gjerm\OneDrive\Documents\ITPE3200 WEBAPPLIKASJONER\WEBEX2\WebEx2" (b5d60022)
+2022-11-09T15:18:21.4495419+01:00  [ERR] (node:20252) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (dd1a5b92)
+2022-11-09T15:18:21.4554202+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+(node:20252) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (e3db1fe4)
