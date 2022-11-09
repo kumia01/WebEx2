@@ -2,10 +2,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System;
+using WebEx2.DAL;
+using WebEx2.Models;
 
 namespace WebEx2
 {
@@ -22,8 +26,17 @@ namespace WebEx2
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllersWithViews();
-
+            services.AddControllers();
+            services.AddDbContext<DB>(options =>
+                            options.UseSqlite("Data Source=Kunde.db"));
+            services.AddScoped<IBrukerRepository, BrukerRepository>();
+            services.AddSession(options =>
+            {
+                options.Cookie.Name = ".AdventureWorks.Session";
+                options.IdleTimeout = TimeSpan.FromSeconds(1800); // 30 minutter
+                options.Cookie.IsEssential = true;
+            });
+            services.AddDistributedMemoryCache();
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
@@ -38,6 +51,7 @@ namespace WebEx2
             {
                 app.UseDeveloperExceptionPage();
                 loggerFactory.AddFile("Logs/KundeLog.txt");
+                //DBinit.Initialize(app);
             }
             else
             {
@@ -51,6 +65,7 @@ namespace WebEx2
             app.UseSpaStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

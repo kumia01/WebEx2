@@ -5,7 +5,7 @@ using System;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
-namespace Webex2.DAL
+namespace WebEx2.DAL
 {
     public class AksjeRepository : IAksjeRepository
     {

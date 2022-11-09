@@ -9,9 +9,10 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Webex2.DAL;
+using WebEx2.DAL;
+using Microsoft.AspNetCore.Http;
 
-namespace Webex2.Controllers
+namespace WebEx2.Controllers
 {
 
     [Route("[controller]/[action]")]
@@ -20,6 +21,8 @@ namespace Webex2.Controllers
         private readonly IBrukerRepository _db;
 
         private ILogger<BrukerController> _log;
+
+        public const string _loggetInn = "loggetInn";
 
         public BrukerController(IBrukerRepository db, ILogger<BrukerController> log)
         {
@@ -48,6 +51,10 @@ namespace Webex2.Controllers
         //Henter alle brukere fra brukere tabellen i DB, returnerer liste av Bruker objekt
         public async Task<ActionResult> HentAlle()
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+                return Unauthorized();
+            }
             List<Bruker> alleBrukere = await _db.HentAlle();
             return Ok(alleBrukere);
         }
@@ -55,6 +62,10 @@ namespace Webex2.Controllers
         //Sletter en brukerrad ved hjelp av bruker id
         public async Task<ActionResult> Slett(int id)
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+                return Unauthorized();
+            }
             bool returOK = await _db.Slett(id);
             if (!returOK)
             {
@@ -67,6 +78,10 @@ namespace Webex2.Controllers
         //Henter en bruker fra DB ve hjelp av bruker id
         public async Task<ActionResult> HentEn(int id)
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+                return Unauthorized();
+            }
             Bruker enBruker = await _db.HentEn(id);
             if (enBruker == null)
             {
@@ -79,6 +94,10 @@ namespace Webex2.Controllers
         //Endrer en bruker ved hjelp av bruker id og redigerer brukerraden i DB
         public async Task<ActionResult> Endre(Bruker endreBruker)
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+                return Unauthorized();
+            }
             if (ModelState.IsValid)
             {
                 bool returOK = await _db.Endre(endreBruker);
@@ -92,6 +111,29 @@ namespace Webex2.Controllers
             _log.LogInformation("Feil i inputvalidering!");
             return BadRequest("Feil i inputvalidering!");
             
+        }
+
+        public async Task<ActionResult> LoggInn(Kunde kunde)
+        {
+            if (ModelState.IsValid)
+            {
+                bool returnOK = await _db.LoggInn(kunde);
+                if (!returnOK)
+                {
+                    _log.LogInformation("Innlogging feilet for bruker " + kunde.Brukernavn + "!");
+                    HttpContext.Session.SetString(_loggetInn, "");
+                    return Ok(false);
+                }
+                HttpContext.Session.SetString(_loggetInn, "LoggetInn");
+                return Ok(true);
+            }
+            _log.LogInformation("Feil i inputvalidering!");
+            return BadRequest("Feil i inputvalidering på server!");
+        }
+
+        public void LoggUt()
+        {
+            HttpContext.Session.SetString(_loggetInn, "");
         }
     }
 }

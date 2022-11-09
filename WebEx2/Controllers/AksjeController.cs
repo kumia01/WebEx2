@@ -8,9 +8,9 @@ using System.Reflection.Metadata;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
-using Webex2.DAL;
+using WebEx2.DAL;
 
-namespace Webex2.Controllers
+namespace WebEx2.Controllers
 {
 
     [Route("[controller]/[action]")]

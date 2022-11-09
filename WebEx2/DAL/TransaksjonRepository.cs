@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Webex2.DAL
+namespace WebEx2.DAL
 {
     public class TransaksjonRepository : ITransaksjonRepository
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Webex2.DAL
+namespace WebEx2.DAL
 {
     public interface IBrukerRepository
     {
@@ -11,5 +11,6 @@ namespace Webex2.DAL
         Task<bool> Slett(int id);
         Task<Bruker> HentEn(int id);
         Task<bool> Endre(Bruker endreBruker);
+        Task<bool> LoggInn(Kunde kunde);
     }
 }

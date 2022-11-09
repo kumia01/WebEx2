@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
-
-
+using WebEx2.DAL;
 
 namespace WebEx2.Models
 {
@@ -16,10 +15,10 @@ namespace WebEx2.Models
                 var context = serviceScope.ServiceProvider.GetService<DB>();
 
                 // må slette og opprette databasen hver gang når den skalinitieres (seed`es)
-                //context.Database.EnsureDeleted();
-                //context.Database.EnsureCreated();
+                context.Database.EnsureDeleted();
+                context.Database.EnsureCreated();
                 
-                /*var poststed1 = new Poststeder { Postnr = "0372", Poststed = "Oslo" };
+                var poststed1 = new Poststeder { Postnr = "0372", Poststed = "Oslo" };
                 var aksje1 = new FlereAksjer { Ticker = "NOK", Selskap = "Norske Kroner", Pris = 20, gammelPris = 1 };
                 var bruker1 = new Brukere { Fornavn = "Ole", Etternavn = "Hansen", Adresse = "Olsloveien 82", Poststed = poststed1 };
 
@@ -34,11 +33,19 @@ namespace WebEx2.Models
                 bruker1.Transaksjoner = nyTransaksjon;
                 aksje1.Transaksjoner = nyTransaksjon;
 
+                var kunde = new Kunder();
+                kunde.Brukernavn = "OleErBest";
+                string passord = "Jegheterole";
+                byte[] salt = BrukerRepository.LagSalt();
+                byte[] hash = BrukerRepository.LagHash(passord, salt);
+                kunde.Passord = hash;
+                kunde.Salt = salt;
+                context.Kunder.Add(kunde);
 
                 context.Brukere.Add(bruker1);
-                context.FlereAksjer.Add(aksje1);*/
+                context.FlereAksjer.Add(aksje1);
 
-                //context.SaveChanges();
+                context.SaveChanges();
             }
         }
     }

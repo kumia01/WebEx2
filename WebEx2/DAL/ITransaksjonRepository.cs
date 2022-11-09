@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Webex2.DAL
+namespace WebEx2.DAL
 {
     public interface ITransaksjonRepository
     {

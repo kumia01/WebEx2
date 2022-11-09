@@ -28,6 +28,15 @@ namespace WebEx2.Models
         virtual public List<Brukere> Brukere { get; set; }
     }
 
+    public class Kunder
+    {
+        public int Id { get; set; }
+        public string Brukernavn { get; set; }
+        public byte[] Passord { get; set; }
+        public byte[] Salt { get; set; }
+    }
+
+
     //Oppretter tabellen FlereAksjer, med forhold til Transaksjoner
     public class FlereAksjer
     {
@@ -63,6 +72,7 @@ namespace WebEx2.Models
         virtual public DbSet<FlereAksjer> FlereAksjer { get; set; }
         virtual public DbSet<Poststeder> Poststeder { get; set; }
         virtual public DbSet<Transaksjoner> Transaksjoner { get; set; }
+        virtual public DbSet<Kunder> Kunder { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -6,10 +6,11 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Webex2.Controllers;
-using Webex2.DAL;
+using WebEx2.Controllers;
+using WebEx2.DAL;
+using Microsoft.AspNetCore.Http;
 
-namespace ghostproject.Controllers
+namespace WebEx2.Controllers
 {
     [Route("[controller]/[action]")]
     public class TransaksjonController : ControllerBase
@@ -28,6 +29,11 @@ namespace ghostproject.Controllers
         //Lagrer en ny rad i databasen med innTransaksjon, ved kjøp og salg
         public async Task<ActionResult> Lagre(Transaksjon innTransaksjon)
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(BrukerController._loggetInn)))
+            {
+                return Unauthorized();
+            }
+
             if (ModelState.IsValid)
             {
                 bool returOK = await _db.Lagre(innTransaksjon);
@@ -45,6 +51,10 @@ namespace ghostproject.Controllers
         //Henter alle transaksjoner fra databasen og oppretter en liste med objektene
         public async Task<ActionResult> HentAlle()
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(BrukerController._loggetInn)))
+            {
+                return Unauthorized();
+            }
             List<Transaksjon> alleTransaksjoner = await _db.HentAlle();
             return Ok(alleTransaksjoner);
         }
@@ -52,6 +62,10 @@ namespace ghostproject.Controllers
         //Henter alle transaksjoner til en bruker ved hjelp av brukerId
         public async Task<ActionResult> HentBrukerTransaksjoner(int brukerId)
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(BrukerController._loggetInn)))
+            {
+                return Unauthorized();
+            }
             List<Transaksjon> alleTransaksjoner = await _db.HentBrukerTransaksjoner(brukerId);
             return Ok(alleTransaksjoner);
         }
@@ -59,6 +73,10 @@ namespace ghostproject.Controllers
         //Henter alle transaksjoner til en aksje ved hjelp av aksjeId
         public async Task<ActionResult> HentAksjeTransaksjoner(int aksjeId) 
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(BrukerController._loggetInn)))
+            {
+                return Unauthorized();
+            }
             List<Transaksjon> alleTransaksjoner = await _db.HentAksjeTransaksjoner(aksjeId);
             return Ok(alleTransaksjoner);
         }

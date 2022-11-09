@@ -4,9 +4,10 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using System.Security.Cryptography;
 
-
-namespace Webex2.DAL
+namespace WebEx2.DAL
 {
     public class BrukerRepository : IBrukerRepository
     {
@@ -135,6 +136,45 @@ namespace Webex2.DAL
                 return false;
             }
             return true;
+        }
+
+        public static byte[] LagHash(string passord, byte[] salt)
+        {
+            return KeyDerivation.Pbkdf2(
+                password: passord,
+                salt: salt,
+                prf: KeyDerivationPrf.HMACSHA512,
+                iterationCount: 1000,
+                numBytesRequested: 32);
+        }
+
+        public static byte[] LagSalt()
+        {
+            var csp = new RNGCryptoServiceProvider();
+            var salt = new byte[24];
+            csp.GetBytes(salt);
+            return salt;
+        }
+
+        public async Task<bool> LoggInn(Kunde kunde)
+        {
+            try
+            {
+                Kunder funnetKunde = await _db.Kunder.FirstOrDefaultAsync(b => b.Brukernavn == kunde.Brukernavn);
+
+                byte[] hash = LagHash(kunde.Passord, funnetKunde.Salt);
+                bool ok = hash.SequenceEqual(funnetKunde.Passord);
+
+                if (ok)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }
