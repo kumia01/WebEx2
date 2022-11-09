@@ -1,4 +1,4 @@
 .vs/
 WebEx2/bin/Debug/
 WebEx2/obj/Debug/
-WebEx2/ClientApp/
+WebEx2/ClientApp/node_modules
