@@ -3,15 +3,20 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+using System;
 
 namespace WebEx2.DAL
 {
     public class TransaksjonRepository : ITransaksjonRepository
     {
         private readonly DB _db;
-        public TransaksjonRepository(DB db)
+
+        private ILogger<TransaksjonRepository> _log; 
+        public TransaksjonRepository(DB db, ILogger<TransaksjonRepository> log)
         {
             _db = db;
+            _log = log;
         }
 
 
@@ -31,8 +36,9 @@ namespace WebEx2.DAL
                 await _db.SaveChangesAsync();
                 return true;
             }
-            catch
+            catch(Exception e)
             {
+                _log.LogInformation(e.Message);
                 return false;
             }
         }
@@ -53,8 +59,9 @@ namespace WebEx2.DAL
                 }).ToListAsync();
                 return alleTransaksjoner;
             }
-            catch
+            catch(Exception e)
             {
+                _log.LogInformation(e.Message);
                 return null;
             }
 
@@ -76,8 +83,9 @@ namespace WebEx2.DAL
                 return alleTransaksjoner;
 
             }
-            catch
+            catch(Exception e)
             {
+                _log.LogInformation(e.Message);
                 return null;
             }
 
@@ -99,8 +107,9 @@ namespace WebEx2.DAL
                 return alleTransaksjoner;
 
             }
-            catch
+            catch(Exception e)
             {
+                _log.LogInformation(e.Message);
                 return null;
             }
         }

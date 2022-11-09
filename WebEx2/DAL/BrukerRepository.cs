@@ -6,6 +6,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using System.Security.Cryptography;
+using Microsoft.Extensions.Logging;
+using System;
 
 namespace WebEx2.DAL
 {
@@ -13,9 +15,12 @@ namespace WebEx2.DAL
     {
         private readonly DB _db;
 
-        public BrukerRepository(DB db)
+        private ILogger<BrukerRepository> _log;
+
+        public BrukerRepository(DB db, ILogger<BrukerRepository> log)
         {
             _db = db;
+            _log = log;
         }
 
         //Lager en ny rad i brukere tabellen med innbruker når en bruker registrerer en kunde,
@@ -45,8 +50,9 @@ namespace WebEx2.DAL
                 await _db.SaveChangesAsync();
                 return true;
             }
-            catch
+            catch(Exception e)
             {
+                _log.LogInformation(e.Message);
                 return false;
             }
         }
@@ -67,8 +73,9 @@ namespace WebEx2.DAL
                 }).ToListAsync();
                 return alleBrukere;
             }
-            catch
+            catch(Exception e)
             {
+                _log.LogInformation(e.Message);
                 return null;
             }
         }
@@ -83,8 +90,9 @@ namespace WebEx2.DAL
                 await _db.SaveChangesAsync();
                 return true;
             }
-            catch
+            catch(Exception e)
             {
+                _log.LogInformation(e.Message);
                 return false;
             }
         }
@@ -92,17 +100,25 @@ namespace WebEx2.DAL
         //Henter en bruker fra DB ve hjelp av bruker id
         public async Task<Bruker> HentEn(int id)
         {
-            Brukere enBruker = await _db.Brukere.FindAsync(id);
-            var hentetBruker = new Bruker()
+            try
             {
-                Id = enBruker.Id,
-                Fornavn = enBruker.Fornavn,
-                Etternavn = enBruker.Etternavn,
-                Adresse = enBruker.Adresse,
-                Postnr = enBruker.Poststed.Postnr,
-                Poststed = enBruker.Poststed.Poststed
-            };
-            return hentetBruker;
+                Brukere enBruker = await _db.Brukere.FindAsync(id);
+                var hentetBruker = new Bruker()
+                {
+                    Id = enBruker.Id,
+                    Fornavn = enBruker.Fornavn,
+                    Etternavn = enBruker.Etternavn,
+                    Adresse = enBruker.Adresse,
+                    Postnr = enBruker.Poststed.Postnr,
+                    Poststed = enBruker.Poststed.Poststed
+                };
+                return hentetBruker;
+            }
+            catch(Exception e)
+            {
+                _log.LogInformation(e.Message);
+                return null;
+            }
         }
 
         //Endrer en bruker ved hjelp av bruker id og redigerer brukerraden i DB
@@ -131,8 +147,9 @@ namespace WebEx2.DAL
                 endreObjekt.Adresse = endreBruker.Adresse;
                 await _db.SaveChangesAsync();
             }
-            catch
+            catch(Exception e)
             {
+                _log.LogInformation(e.Message);
                 return false;
             }
             return true;
@@ -171,8 +188,9 @@ namespace WebEx2.DAL
                 }
                 return false;
             }
-            catch
+            catch(Exception e)
             {
+                _log.LogInformation(e.Message);
                 return false;
             }
         }

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace WebEx2.DAL
 {
@@ -11,9 +12,12 @@ namespace WebEx2.DAL
     {
         private readonly DB _dbAksje;
 
-        public AksjeRepository(DB db)
+        private ILogger<AksjeRepository> _log;
+
+        public AksjeRepository(DB db, ILogger<AksjeRepository> log)
         {
             _dbAksje = db;
+            _log = log;
         }
 
         //Henter alle aksjer fra DB og returner liste med Aksje objekter
@@ -33,8 +37,9 @@ namespace WebEx2.DAL
 
                 return alleAksjer;
             }
-            catch
+            catch(Exception e)
             {
+                _log.LogInformation(e.Message);
                 return null;
             }
         }
@@ -42,16 +47,25 @@ namespace WebEx2.DAL
         //Henter en aksje fra DB ved hjelp av aksje id
         public async Task<Aksje> HentEn(int id)
         {
-            FlereAksjer enAksje = await _dbAksje.FlereAksjer.FindAsync(id);
-            var hentetAskje = new Aksje()
+            try
             {
-                Id = enAksje.Id,
-                Ticker = enAksje.Ticker,
-                Selskap = enAksje.Selskap,
-                Pris = enAksje.Pris,
-                gammelPris = enAksje.gammelPris
-            };
-            return hentetAskje;
+                FlereAksjer enAksje = await _dbAksje.FlereAksjer.FindAsync(id);
+                var hentetAskje = new Aksje()
+                {
+                    Id = enAksje.Id,
+                    Ticker = enAksje.Ticker,
+                    Selskap = enAksje.Selskap,
+                    Pris = enAksje.Pris,
+                    gammelPris = enAksje.gammelPris
+                };
+                return hentetAskje;
+            }
+            catch(Exception e)
+            {
+                _log.LogInformation(e.Message);
+                return null;
+            }
+            
         }
 
         //Endrer prisen på alle aksjer i DB, setter den eldre prisen til gammelPris
@@ -76,8 +90,9 @@ namespace WebEx2.DAL
                 await _dbAksje.SaveChangesAsync();
                 return true;
             }
-            catch
+            catch(Exception e)
             {
+                _log.LogInformation(e.Message);
                 return false;
             }
         }
