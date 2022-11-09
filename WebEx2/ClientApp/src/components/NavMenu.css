@@ -8,8 +8,10 @@ html {
     font-size: 14px;
 }
 
-header {
-    background-color: #D9D9D9;
+#navText {
+    font-style: initial;
+    color: #0027FF;
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 @media (min-width: 768px) {

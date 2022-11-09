@@ -1,34 +1,35 @@
 ﻿import React, { Component } from 'react';
+import { Form, Col, Button } from "react-bootstrap";
 
 export class Login extends Component {
     static displayName = Login.name;
 
     render() {
         return (
-            <div class="container">
-                <form class="form-registrer">
-                    <div class="col-md-4">
-                        <h2>Log in</h2>
+            <div className="container">
+                <form className="form-registrer">
+                    <div className="col-md-4">
+                        <h2>Logg inn</h2>
 
-                        <div class="form-group">
-                            <label for="fornavn">Brukernavn</label>
-                            <input type="text" placeholder="Brukernavn" class="form-control" id="brukernavn" required="required" />
+                        <div className="form-group">
+                            <label htmlFor="fornavn">Brukernavn</label>
+                            <input type="text" placeholder="Brukernavn" className="form-control" id="brukernavn" required="required" />
                         </div>
 
-                        <div class="form-group">
-                            <label for="etternavn">Passord</label>
-                            <input type="text" placeholder="Passord" class="form-control" id="passord" required="required" />
+                        <div className="form-group">
+                            <label htmlFor="etternavn">Passord</label>
+                            <input type="text" placeholder="Passord" className="form-control" id="passord" required="required" />
                         </div>
 
-                        <div class="form-group">
-                            <div class="btnLogIn">
-                                <button class="btn btn-primary">Logg Inn</button>
+                        <div className="form-group">
+                            <div className="btnLogIn">
+                                <button className="btn btn-primary">Logg Inn</button>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="linkRegBruker">
-                                <a class="link-primary">Opprett Bruker</a>
+                        <div className="form-group">
+                            <div className="linkRegBruker">
+                                <a className="link-primary">Opprett Bruker</a>
                             </div>
                         </div>
 
