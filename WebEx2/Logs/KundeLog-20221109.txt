@@ -54,3 +54,19 @@
 2022-11-09T14:37:35.5154161+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
 (node:5208) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
  (5e676e0d)
+2022-11-09T15:10:21.3771480+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-11-09T15:10:21.3917435+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-11-09T15:10:21.3942847+01:00  [INF] Content root path: "C:\Users\Storm\source\repos\WebEx2\WebEx2" (b5d60022)
+2022-11-09T15:10:28.5984516+01:00  [ERR] (node:18344) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (1c7c203f)
+2022-11-09T15:10:28.6032051+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+(node:18344) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (e067a4ce)
+2022-11-09T15:24:22.1224739+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-11-09T15:24:22.1403337+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-11-09T15:24:22.1443775+01:00  [INF] Content root path: "C:\Users\Storm\source\repos\WebEx2\WebEx2" (b5d60022)
+2022-11-09T15:24:28.9706480+01:00  [ERR] (node:6188) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (1254cb83)
+2022-11-09T15:24:28.9744673+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+(node:6188) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (b1ecf811)
