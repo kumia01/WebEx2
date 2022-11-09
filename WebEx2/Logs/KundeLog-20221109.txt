@@ -70,3 +70,27 @@
 2022-11-09T16:11:05.1327848+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
 (node:22612) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
  (97488ecf)
+2022-11-09T19:54:14.7068915+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-11-09T19:54:14.7155785+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-11-09T19:54:14.7172870+01:00  [INF] Content root path: "C:\Users\thien\OneDrive\Documents\github\WebEx2\WebEx2" (b5d60022)
+2022-11-09T19:54:18.2861324+01:00  [ERR] (node:22124) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (98402b5a)
+2022-11-09T19:54:18.2884324+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+(node:22124) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (2ba692cb)
+2022-11-09T20:10:11.3278577+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-11-09T20:10:11.3381705+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-11-09T20:10:11.3439273+01:00  [INF] Content root path: "C:\Users\thien\OneDrive\Documents\github\WebEx2\WebEx2" (b5d60022)
+2022-11-09T20:10:14.9307100+01:00  [ERR] (node:19892) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (601f0d84)
+2022-11-09T20:10:14.9328359+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+(node:19892) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (4d31c045)
+2022-11-09T21:12:04.2314803+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-11-09T21:12:04.2394034+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-11-09T21:12:04.2395235+01:00  [INF] Content root path: "C:\Users\thien\OneDrive\Documents\github\WebEx2\WebEx2" (b5d60022)
+2022-11-09T21:12:07.8443474+01:00  [ERR] (node:16776) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (c8943cc5)
+2022-11-09T21:12:07.8453087+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+(node:16776) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (6b660af4)
