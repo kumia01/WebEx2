@@ -6,7 +6,7 @@ export class Home extends Component {
 
     render () {
         return (
-            <Container id="mainbox">
+            <Container>
                 <Row>
                     <Col sm="6">
                         <Card>
@@ -16,7 +16,7 @@ export class Home extends Component {
 
                             <CardText>
                                 Ghost Finance er en brukervennlig aksjehandel- og investeringsplattform for unge investorer som deg.<br />
-                                Jevnlig investering kan hjelpe deg bygge kapital og oppnå dine økonomiske mål. 
+                                    Jevnlig investering kan hjelpe deg bygge kapital og oppnå dine økonomiske mål.
                             </CardText>
                         </Card>
                     </Col>

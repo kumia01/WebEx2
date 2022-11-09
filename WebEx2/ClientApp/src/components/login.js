@@ -9,15 +9,15 @@ export class Login extends Component {
             <Container>
                 <Form>
                     <Col sm="6">
-                        <h2>Logg inn</h2>
+                        <h2>Logg innØ</h2>
 
                         <FormGroup>
-                            <Label for="fornavn">Brukernavn</Label>
+                            <Label for="brukernavn">Brukernavn</Label>
                             <Input type="text" placeholder="Brukernavn" className="form-control" id="brukernavn" required="required" />
                         </FormGroup>
 
                         <FormGroup>
-                            <Label htmlFor="etternavn">Passord</Label>
+                            <Label for="passord">Passord</Label>
                             <Input type="text" placeholder="Passord" className="form-control" id="passord" required="required" />
                         </FormGroup>
 
