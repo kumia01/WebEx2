@@ -30,6 +30,8 @@ namespace WebEx2
             services.AddDbContext<DB>(options =>
                             options.UseSqlite("Data Source=Kunde.db"));
             services.AddScoped<IBrukerRepository, BrukerRepository>();
+            services.AddScoped<IAksjeRepository, AksjeRepository>();
+            services.AddScoped<ITransaksjonRepository, TransaksjonRepository>();
             services.AddSession(options =>
             {
                 options.Cookie.Name = ".AdventureWorks.Session";
@@ -51,7 +53,7 @@ namespace WebEx2
             {
                 app.UseDeveloperExceptionPage();
                 loggerFactory.AddFile("Logs/KundeLog.txt");
-                //DBinit.Initialize(app);
+                DBinit.Initialize(app);
             }
             else
             {
