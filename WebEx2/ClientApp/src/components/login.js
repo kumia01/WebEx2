@@ -8,7 +8,7 @@ export class Login extends Component {
         return (
             <Container>
                 <Form>
-                    <Col className="col-md-4">
+                    <Col sm="6">
                         <h2>Logg inn</h2>
 
                         <FormGroup>
