@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gjerm\\OneDrive\\Documents\\ITPE3200 WEBAPPLIKASJONER\\WEBEX2\\WebEx2\\WebEx2.csproj": {}
+    "C:\\Users\\thien\\OneDrive\\Documents\\github\\WebEx2\\WebEx2\\WebEx2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gjerm\\OneDrive\\Documents\\ITPE3200 WEBAPPLIKASJONER\\WEBEX2\\WebEx2\\WebEx2.csproj": {
+    "C:\\Users\\thien\\OneDrive\\Documents\\github\\WebEx2\\WebEx2\\WebEx2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gjerm\\OneDrive\\Documents\\ITPE3200 WEBAPPLIKASJONER\\WEBEX2\\WebEx2\\WebEx2.csproj",
+        "projectUniqueName": "C:\\Users\\thien\\OneDrive\\Documents\\github\\WebEx2\\WebEx2\\WebEx2.csproj",
         "projectName": "WebEx2",
-        "projectPath": "C:\\Users\\gjerm\\OneDrive\\Documents\\ITPE3200 WEBAPPLIKASJONER\\WEBEX2\\WebEx2\\WebEx2.csproj",
-        "packagesPath": "C:\\Users\\gjerm\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gjerm\\OneDrive\\Documents\\ITPE3200 WEBAPPLIKASJONER\\WEBEX2\\WebEx2\\obj\\",
+        "projectPath": "C:\\Users\\thien\\OneDrive\\Documents\\github\\WebEx2\\WebEx2\\WebEx2.csproj",
+        "packagesPath": "C:\\Users\\thien\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\thien\\OneDrive\\Documents\\github\\WebEx2\\WebEx2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\gjerm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\thien\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -84,7 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
