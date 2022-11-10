@@ -15,7 +15,7 @@ export class Login extends Component {
         this.validering = this.validering.bind(this);
         this.login = this.login.bind(this);
     }
-
+    //validering
     validering() {
         let input = this.state.input;
         let errors = {};
@@ -50,7 +50,7 @@ export class Login extends Component {
         this.setState({ errors: errors });
         return formOK
     }
-
+    //login kall til serveren for å starte session
     login() {
         if (this.validering()) {
             
