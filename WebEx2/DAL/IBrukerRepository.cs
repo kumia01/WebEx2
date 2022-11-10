@@ -12,5 +12,7 @@ namespace WebEx2.DAL
         Task<Bruker> HentEn(int id);
         Task<bool> Endre(Bruker endreBruker);
         Task<bool> LoggInn(Kunde kunde);
+        Task<bool> LagreBruker(Kunde innKunde);
+        Task<bool> SlettBruker(int id);
     }
 }

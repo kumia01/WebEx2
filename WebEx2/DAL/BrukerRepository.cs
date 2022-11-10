@@ -155,6 +155,48 @@ namespace WebEx2.DAL
             return true;
         }
 
+        public async Task<bool> LagreBruker(Kunde innKunde)
+        {
+            try
+            {
+                var nyBruker = new Kunder();
+
+                nyBruker.Brukernavn = innKunde.Brukernavn;
+                string passord = innKunde.Passord;
+                
+                byte[] salt = LagSalt();
+                byte[] hash = LagHash(passord, salt);
+                nyBruker.Passord = hash;
+                nyBruker.Salt = salt;
+
+                _db.Kunder.Add(nyBruker);
+                await _db.SaveChangesAsync();
+                return true;
+                
+            }
+            catch(Exception e)
+            {
+                _log.LogInformation(e.Message);
+                return false;
+            }
+        }
+
+        public async Task<bool> SlettBruker(int id)
+        {
+            try
+            {
+                Kunder enDBBruker = await _db.Kunder.FindAsync(id);
+                _db.Kunder.Remove(enDBBruker);
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.Message);
+                return false;
+            }
+        }
+
         public static byte[] LagHash(string passord, byte[] salt)
         {
             return KeyDerivation.Pbkdf2(
