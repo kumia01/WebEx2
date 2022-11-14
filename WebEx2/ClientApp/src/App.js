@@ -5,6 +5,7 @@ import { FetchData } from './components/FetchData';
 import { Balanse } from './components/Balanse';
 import { Login } from './components/login';
 import { Registrer } from './components/registrer';
+import { Uttak } from './components/Uttak';
 import './custom.css'
 import { Home } from './components/Home';
 
@@ -19,6 +20,7 @@ export default class App extends Component {
             <Route path='/fetch-data' component={FetchData} />
             <Route path='/login' component={Login} />
             <Route path='/registrer' component={Registrer} />
+            <Route path='/uttak' component={Uttak} />
       </Layout>
     );
   }
