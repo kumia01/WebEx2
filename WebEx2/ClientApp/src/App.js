@@ -6,6 +6,7 @@ import { Balanse } from './components/Balanse';
 import { Login } from './components/login';
 import { Registrer } from './components/registrer';
 import { Uttak } from './components/Uttak';
+import { Handel } from './components/Handel';
 import './custom.css'
 import { Home } from './components/Home';
 
@@ -21,6 +22,7 @@ export default class App extends Component {
             <Route path='/login' component={Login} />
             <Route path='/registrer' component={Registrer} />
             <Route path='/uttak' component={Uttak} />
+            <Route path='/handel' component={Handel} />
       </Layout>
     );
   }

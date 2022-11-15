@@ -45,6 +45,9 @@ render () {
                     <NavItem>
                         <NavLink tag={Link} id="navText" to="/uttak">Inntak/Uttak</NavLink>
                     </NavItem>
+                    <NavItem>
+                        <NavLink tag={Link} id="navText" to="/handel">Handel</NavLink>
+                    </NavItem>
                 </ul>
                 </Collapse>
             </Container>
