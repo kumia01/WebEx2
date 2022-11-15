@@ -1,0 +1,22 @@
+<<<<<<< Updated upstream
+2022-11-15T13:16:36.8327153+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-11-15T13:16:36.8543460+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-11-15T13:16:36.8551752+01:00  [INF] Content root path: "C:\Users\ersan\source\repos\kumia01\WebEx2\WebEx2" (b5d60022)
+2022-11-15T13:16:53.9139832+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-11-15T13:16:53.9405538+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-11-15T13:16:53.9465063+01:00  [INF] Content root path: "C:\Users\ersan\source\repos\kumia01\WebEx2\WebEx2" (b5d60022)
+2022-11-15T13:17:09.0063577+01:00  [ERR] (node:11128) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (a951d44d)
+2022-11-15T13:17:09.0133309+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+(node:11128) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (179d2d15)
+=======
+2022-11-15T13:26:29.4287009+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-11-15T13:26:29.4427441+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-11-15T13:26:29.4429191+01:00  [INF] Content root path: "C:\Users\thien\Documents\GitHub\WebEx2\WebEx2" (b5d60022)
+2022-11-15T13:26:36.5857566+01:00  [ERR] (node:2672) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (ec7d3292)
+2022-11-15T13:26:36.5874150+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+(node:2672) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+ (79af73ca)
+>>>>>>> Stashed changes
