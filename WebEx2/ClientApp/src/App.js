@@ -8,6 +8,7 @@ import { Registrer } from './components/registrer';
 import { Uttak } from './components/Uttak';
 import './custom.css'
 import { Home } from './components/Home';
+import { Handel } from './components/Handel';
 
 export default class App extends Component {
   static displayName = App.name;
