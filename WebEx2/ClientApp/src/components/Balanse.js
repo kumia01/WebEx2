@@ -1,6 +1,67 @@
 ﻿import React, { Component } from 'react';
-import { Button, Form, Container, Col, Row } from 'reactstrap';
-import { Graph } from './Graph.js'
+import { Button, Container, Col, Row } from 'reactstrap';
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend
+  } from "chart.js";
+import { Line } from "react-chartjs-2";
+
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend
+  );
+  const labels = ["January", "February", "March", "April", "May", "June", "July"];
+export const option = {
+  responsive: true,
+  scales: {
+    x: {
+      ticks: {
+        color: "rgba(2, 62, 115, 1)"
+      },
+      grid: {
+        display: false
+      }
+    },
+    y: {
+      min: 0,
+      max: 3500,
+      ticks: {
+        color: "rgba(2, 62, 115, 1)"
+      },
+      grid: {
+        display: false
+      }
+    }
+  },
+  plugins: {
+    legend: {
+      display: false
+    }
+  }
+};
+export const data = {
+  labels: labels,
+  datasets: [
+    {
+      backgroundColor: "rgba(2, 62, 115, 1)",
+      borderColor: "rgba(2, 62, 115, 1)",
+
+      data: [3000, 3000, 3300, 2000, 1550, 2000, 2600, 3000]
+    }
+  ]
+};
+
 
 export class Balanse extends Component {
     static displayName = Balanse.name;
@@ -22,7 +83,7 @@ export class Balanse extends Component {
 
                 <Row fluid className="align-items-center justify-content-center">
                     <Col fluid>
-                        <canvas id="balanse"></canvas>
+                        <Line options={option} data={data} />
                     </Col>
                 </Row>
 
@@ -38,9 +99,7 @@ export class Balanse extends Component {
                         <p>Innskudd: Overføring NOK 3, 000.00 via Vipps</p>
                     </Col>
                 </Row>
-                <row>
-                    <Graph />
-                </row>
+                
             </Container>
         );
     }
