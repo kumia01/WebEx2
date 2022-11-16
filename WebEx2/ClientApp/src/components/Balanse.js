@@ -1,6 +1,6 @@
 ﻿import React, { Component } from 'react';
 import { Button, Form, Container, Col, Row } from 'reactstrap';
-
+import { Graph } from './Graph.js'
 
 export class Balanse extends Component {
     static displayName = Balanse.name;
@@ -8,6 +8,7 @@ export class Balanse extends Component {
     render() {
         return (
             /* Balanse og Knapper */
+
             <Container>
                 <Row fluid className="align-items-center justify-content-center">
                     <Col fluid>
@@ -37,6 +38,9 @@ export class Balanse extends Component {
                         <p>Innskudd: Overføring NOK 3, 000.00 via Vipps</p>
                     </Col>
                 </Row>
+                <row>
+                    <Graph />
+                </row>
             </Container>
         );
     }
