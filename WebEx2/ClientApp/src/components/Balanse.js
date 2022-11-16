@@ -71,30 +71,30 @@ export class Balanse extends Component {
             /* Balanse og Knapper */
 
             <Container>
-                <Row fluid className="align-items-center justify-content-center">
-                    <Col fluid>
+                <Row fluid="true" className="align-items-center justify-content-center">
+                    <Col fluid="true">
                         <p> Din bokførte saldo er: <br /><b>3, 000 NOK</b></p>
                     </Col>
-                    <Col fluid>
+                    <Col fluid="true">
                         <Button className="btn btn-outline" id="innskudd">+ Inskudd</Button>
                         <Button className="btn btn-primary" id="overføring">Overføring</Button>
                     </Col>
                 </Row>
 
-                <Row fluid className="align-items-center justify-content-center">
-                    <Col fluid>
+                <Row fluid="true" className="align-items-center justify-content-center">
+                    <Col fluid="true">
                         <Line options={option} data={data} />
                     </Col>
                 </Row>
 
-                <Row fluid className="align-items-center justify-content-center">
-                    <Col fluid>
+                <Row fluid="true" className="align-items-center justify-content-center">
+                    <Col fluid="true">
                         <p className="bi bi-clock-history"> Nylig aktvitet</p>
                         <p>
                             Logget inn 27.10.2022 23.30
                         </p>
                     </Col>
-                    <Col fluid>
+                    <Col fluid="true">
                         <p className="bi bi-arrow-repeat"> Cash Flow</p>
                         <p>Innskudd: Overføring NOK 3, 000.00 via Vipps</p>
                     </Col>

@@ -9,8 +9,8 @@ export class Home extends Component {
     render() {
         return (
             <Container>
-                <Row fluid className="align-items-center justify-content-center">
-                    <Col fluid>
+                <Row fluid="true" className="align-items-center justify-content-center">
+                    <Col fluid="true">
                         <h3><strong>Hjelper unge voksne</strong></h3>
                         <h3><strong>Vinne økonomisk.</strong></h3>
                         <p>
@@ -18,7 +18,7 @@ export class Home extends Component {
                             <br />Jevnlig investering kan hjelpe deg bygge kapital og oppnå dine økonomiske mål.
                         </p>
                     </Col>
-                    <Col fluid>
+                    <Col fluid="true">
                         <img src={blåstolpe} width="450" />
                     </Col>
                 </Row>

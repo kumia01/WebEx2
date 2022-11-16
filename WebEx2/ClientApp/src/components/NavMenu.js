@@ -49,9 +49,8 @@ render () {
 
 
                            
-                            <UncontrolledDropdown nav inniNavbar>
+                            <UncontrolledDropdown nav>
                                  <DropdownToggle nav caret> Aksjer </DropdownToggle>
-
                                         <DropdownMenu>
                                           <DropdownItem>Handel</DropdownItem>
                                           <DropdownItem divider />
