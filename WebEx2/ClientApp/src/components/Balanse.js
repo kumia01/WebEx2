@@ -1,5 +1,5 @@
 ﻿import React, { Component } from 'react';
-import { Button, Container, Col, Row } from 'reactstrap';
+import { Button, Container, Col, Row} from 'reactstrap';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -20,35 +20,38 @@ ChartJS.register(
     Title,
     Tooltip,
     Legend
-  );
-  const labels = ["January", "February", "March", "April", "May", "June", "July"];
+);
+
+
+const labels = ["January", "February", "March", "April", "May", "June", "July"];
 export const option = {
-  responsive: true,
-  scales: {
-    x: {
-      ticks: {
-        color: "rgba(2, 62, 115, 1)"
+    maintainAspectRation: false,
+    responsive: true,
+    scales: {
+      x: {
+        ticks: {
+          color: "rgba(2, 62, 115, 1)"
+        },
+        grid: {
+          display: false
+        }
       },
-      grid: {
-        display: false
+      y: {
+        min: 0,
+        max: 3500,
+        ticks: {
+          color: "rgba(2, 62, 115, 1)"
+        },
+        grid: {
+          display: false
+        }
       }
     },
-    y: {
-      min: 0,
-      max: 3500,
-      ticks: {
-        color: "rgba(2, 62, 115, 1)"
-      },
-      grid: {
+    plugins: {
+      legend: {
         display: false
       }
     }
-  },
-  plugins: {
-    legend: {
-      display: false
-    }
-  }
 };
 export const data = {
   labels: labels,
@@ -68,39 +71,47 @@ export class Balanse extends Component {
 
     render() {
         return (
-            /* Balanse og Knapper */
+            
+            <div>
+                <Container fluid="true">
 
-            <Container>
-                <Row fluid="true" className="align-items-center justify-content-center">
-                    <Col fluid="true">
-                        <p> Din bokførte saldo er: <br /><b>3, 000 NOK</b></p>
-                    </Col>
-                    <Col fluid="true">
-                        <Button className="btn btn-outline" id="innskudd">+ Inskudd</Button>
-                        <Button className="btn btn-primary" id="overføring">Overføring</Button>
-                    </Col>
-                </Row>
+                    <Row fluid="true" className=" d-flex justify-content-between">
 
-                <Row fluid="true" className="align-items-center justify-content-center">
-                    <Col fluid="true">
-                        <Line options={option} data={data} />
-                    </Col>
-                </Row>
+                        <Col md="8">
+                            <p>Din bokførte saldo er: <br /><b>3, 000 NOK</b></p>
+                        </Col>
 
-                <Row fluid="true" className="align-items-center justify-content-center">
-                    <Col fluid="true">
-                        <p className="bi bi-clock-history"> Nylig aktvitet</p>
-                        <p>
-                            Logget inn 27.10.2022 23.30
-                        </p>
-                    </Col>
-                    <Col fluid="true">
-                        <p className="bi bi-arrow-repeat"> Cash Flow</p>
-                        <p>Innskudd: Overføring NOK 3, 000.00 via Vipps</p>
-                    </Col>
-                </Row>
-                
-            </Container>
+                        <Col md="3">
+                            <Button className="btn btn-outline" id="innskudd">+ Inskudd</Button>
+                            <Button className="btn btn-primary" id="overføring">Overføring</Button>
+                        </Col>
+
+                    </Row>
+                    <Row fluid="true">
+
+                        <Col fluid="true">
+                            <Line options={option} data={data} height={"100"}/>
+                        </Col>
+
+                    </Row>
+
+                    <Row fluid="true" className="justify-content-between">
+
+                        <Col fluid="true" md='6'>
+
+                            <p className="bi bi-clock-history"> Nylig aktvitet</p>
+                            <p>Logget inn 27.10.2022 23.30</p>
+                        </Col>
+        
+                        <Col fluid="true" md='6'>
+                            <p className="bi bi-arrow-repeat"> Cash Flow</p>
+                            <p>Innskudd: Overføring NOK 3, 000.00 via Vipps</p>
+                        </Col>
+
+                    </Row>
+
+                </Container>
+            </div>
         );
     }
 }

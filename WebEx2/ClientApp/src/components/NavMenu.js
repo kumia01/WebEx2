@@ -45,7 +45,10 @@ render () {
                     </NavItem>
                     <NavItem>
                         <NavLink tag={Link} id="navText" to="/uttak">Inntak/Uttak</NavLink>
-                            </NavItem>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink tag={Link} id="navText" to="/historikk">historikk</NavLink>
+                    </NavItem>
 
 
                            
