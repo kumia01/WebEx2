@@ -2,7 +2,25 @@
 import { Button, Form, Container, Col, FormGroup, Label, Input, Row } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
-import { hentKundeId, kundeId } from './validering';
+
+
+//Funksjon som lagrer kunde id'en til kunden som logger på i localstorage
+function lagreKundeId(kunde) {
+    $.post("../Bruker/HentKundeId", kunde, function (kunde) {
+        localStorage.setItem('kundeId', kunde.id);
+    })
+        .fail(function (feil) {
+            if (feil.status == 401) {
+                //relocate bruker til logginn
+                return false;
+            }
+            else {
+                //Feil melding til siden, feil med server - prøv igjen senere
+                return false;
+            }
+        });
+    return true;
+}
 
 export class Login extends Component {
     static displayName = Login.name;
@@ -52,26 +70,32 @@ export class Login extends Component {
         this.setState({ errors: errors });
         return formOK
     }
+
     //login kall til serveren for å starte session
     login() {
-        if (this.validering() == true) {
+        if (this.validering() == true) { //Sjekker at regex er godkjent
             let errors = {};
             const kunde = {
                 brukernavn: this.state.input["brukernavn"],
                 passord: this.state.input["passord"]
             }
-            $.post("../Bruker/LoggInn", kunde, function (OK) {
-                if (OK) {
+            $.post("../Bruker/LoggInn", kunde, function (OK) { //POST kall med kunde object
+                if (OK) { 
+                    lagreKundeId(kunde); //Kaller på lagreKundeId funksjonen
+
                     //SENDE BRUKER TIL HJEMSIDEN HER
+
                     console.log("SIUUUUU!");
-                    hentKundeId(kunde);   
+                    console.log(localStorage.getItem('kundeId'));
                 }
                 else {
-                    console.log("FEIL BRUKERNAVN ELLER PASSORD!")
+                    //Fikse error melding
                     //errors["passord"] = "Feil brukernavn eller passord!";
                     //this.setState({ errors : errors });
+                    console.log("FEIL BRUKERNAVN ELLER PASSORD!")
                 }
             });
+                //Fikse fail function
                 /*.fail(function (feil) {
                     this.state.input["brukernavn"] = "Feil på server - prøv igjen senere: " + feil.responseText + " : " + feil.status + " : " + feil.statusText;
                 });*/

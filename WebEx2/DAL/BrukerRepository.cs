@@ -25,7 +25,7 @@ namespace WebEx2.DAL
 
         //Lager en ny rad i brukere tabellen med innbruker når en bruker registrerer en kunde,
         //lager også ny rad i poststeder tabellen om poststed ikke finnes fra før av
-        public async Task<bool> Lagre(Bruker innBruker)
+        public async Task<bool> Lagre(Bruker innBruker, Kunde innKunde)
         {
             try
             {
@@ -33,6 +33,14 @@ namespace WebEx2.DAL
                 nyBrukerRad.Fornavn = innBruker.Fornavn;
                 nyBrukerRad.Etternavn = innBruker.Etternavn;
                 nyBrukerRad.Adresse = innBruker.Adresse;
+
+                var nyKundeRad = new Kunder();
+                nyKundeRad.Brukernavn = innKunde.Brukernavn;
+                string passord = innKunde.Passord;
+                byte[] salt = LagSalt();
+                byte[] hash = LagHash(passord, salt);
+                nyKundeRad.Passord = hash;
+                nyKundeRad.Salt = salt;
 
                 var sjekkPostnr = await _db.Poststeder.FindAsync(innBruker.Postnr);
                 if (sjekkPostnr == null)
@@ -47,6 +55,7 @@ namespace WebEx2.DAL
                     nyBrukerRad.Poststed = sjekkPostnr;
                 }
                 _db.Brukere.Add(nyBrukerRad);
+                _db.Kunder.Add(nyKundeRad);
                 await _db.SaveChangesAsync();
                 return true;
             }
@@ -86,6 +95,8 @@ namespace WebEx2.DAL
             try
             {
                 Brukere enDBBruker = await _db.Brukere.FindAsync(id);
+                Kunder enDBKunde = await _db.Kunder.FindAsync(id);
+                _db.Kunder.Remove(enDBKunde);
                 _db.Brukere.Remove(enDBBruker);
                 await _db.SaveChangesAsync();
                 return true;
@@ -155,47 +166,6 @@ namespace WebEx2.DAL
             return true;
         }
 
-        public async Task<bool> LagreBruker(Kunde innKunde)
-        {
-            try
-            {
-                var nyBruker = new Kunder();
-
-                nyBruker.Brukernavn = innKunde.Brukernavn;
-                string passord = innKunde.Passord;
-                
-                byte[] salt = LagSalt();
-                byte[] hash = LagHash(passord, salt);
-                nyBruker.Passord = hash;
-                nyBruker.Salt = salt;
-
-                _db.Kunder.Add(nyBruker);
-                await _db.SaveChangesAsync();
-                return true;
-                
-            }
-            catch(Exception e)
-            {
-                _log.LogInformation(e.Message);
-                return false;
-            }
-        }
-
-        public async Task<bool> SlettBruker(int id)
-        {
-            try
-            {
-                Kunder enDBBruker = await _db.Kunder.FindAsync(id);
-                _db.Kunder.Remove(enDBBruker);
-                await _db.SaveChangesAsync();
-                return true;
-            }
-            catch (Exception e)
-            {
-                _log.LogInformation(e.Message);
-                return false;
-            }
-        }
 
         public static byte[] LagHash(string passord, byte[] salt)
         {

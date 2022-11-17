@@ -91,8 +91,3 @@ function validerPassord(passord) {
     }
 }
 
-export function hentKundeId(kunde) {
-    $.post("../Bruker/HentKundeId", kunde, function (kunde) {
-        localStorage.setItem('kundeId', kunde.id);
-    });
-}

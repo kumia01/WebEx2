@@ -32,11 +32,11 @@ namespace WebEx2.Controllers
 
         //Lager en ny rad i brukere tabellen med innbruker når en bruker registrerer en kunde,
         //lager også ny rad i poststeder tabellen om poststed ikke finnes fra før av
-        public async Task<ActionResult> Lagre(Bruker innBruker)
+        public async Task<ActionResult> Lagre(Bruker innBruker, Kunde innKunde)
         {
             if (ModelState.IsValid)
             {
-                bool returOK = await _db.Lagre(innBruker);
+                bool returOK = await _db.Lagre(innBruker, innKunde);
                 if (!returOK)
                 {
                     _log.LogInformation("Brukeren ble ikke lagret!");
@@ -111,37 +111,6 @@ namespace WebEx2.Controllers
             _log.LogInformation("Feil i inputvalidering!");
             return BadRequest("Feil i inputvalidering!");
             
-        }
-
-        public async Task<ActionResult> LagreBruker(Kunde innKunde)
-        {
-            if (ModelState.IsValid)
-            {
-                bool returOK = await _db.LagreBruker(innKunde);
-                if (!returOK)
-                {
-                    _log.LogInformation("Brukeren ble ikke lagret!");
-                    return BadRequest("Brukeren ble ikke lagret!");
-                }
-                return Ok("Brukeren ble lagret");
-            }
-            _log.LogInformation("Feil i inputvalidering!");
-            return BadRequest("Feil i inputvalidering!");
-        }
-
-        public async Task<ActionResult> SlettBruker(int id)
-        {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
-            {
-                return Unauthorized();
-            }
-            bool returOK = await _db.SlettBruker(id);
-            if (!returOK)
-            {
-                _log.LogInformation("Brukeren ble ikke slettet!");
-                return BadRequest("Brukeren ble ikke slettet!");
-            }
-            return Ok("Brukeren ble slettet");
         }
 
         public async Task<ActionResult> LoggInn(Kunde kunde)
