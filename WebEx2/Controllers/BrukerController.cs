@@ -88,7 +88,7 @@ namespace WebEx2.Controllers
                 _log.LogInformation("Fant ikke brukeren!");
                 return NotFound("Fant ikke brukeren!");
             }
-            return Ok("Brukeren ble funnet");
+            return Ok(enBruker);
         }
 
         //Endrer en bruker ved hjelp av bruker id og redigerer brukerraden i DB
@@ -160,6 +160,21 @@ namespace WebEx2.Controllers
             }
             _log.LogInformation("Feil i inputvalidering!");
             return BadRequest("Feil i inputvalidering på server!");
+        }
+
+        public async Task<ActionResult> HentKundeId(Kunde kunde)
+        {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(_loggetInn)))
+            {
+                return Unauthorized();
+            }
+            Kunde funnetKunde = await _db.HentKundeId(kunde);
+            if (funnetKunde == null)
+            {
+                _log.LogInformation("Fant ikke kunden!");
+                return NotFound("Fant ikke kunden!");
+            }
+            return Ok(funnetKunde);
         }
 
         public void LoggUt()

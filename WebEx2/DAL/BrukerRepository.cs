@@ -236,5 +236,23 @@ namespace WebEx2.DAL
                 return false;
             }
         }
+
+        public async Task<Kunde> HentKundeId(Kunde kunde)
+        {
+            try
+            {
+                Kunder funnetKunde = await _db.Kunder.FirstOrDefaultAsync(b => b.Brukernavn == kunde.Brukernavn);
+                var hentetKunde = new Kunde()
+                {
+                    Id = funnetKunde.Id,
+                };
+                return hentetKunde;
+            }
+            catch (Exception e)
+            {
+                _log.LogInformation(e.Message);
+                return null;
+            }
+        }
     }
 }

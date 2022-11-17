@@ -14,5 +14,6 @@ namespace WebEx2.DAL
         Task<bool> LoggInn(Kunde kunde);
         Task<bool> LagreBruker(Kunde innKunde);
         Task<bool> SlettBruker(int id);
+        Task<Kunde> HentKundeId(Kunde kunde);
     }
 }

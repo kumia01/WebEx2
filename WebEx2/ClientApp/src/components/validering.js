@@ -1,4 +1,6 @@
-﻿function validerFornavn(fornavn) {
+﻿import $ from 'jquery';
+
+function validerFornavn(fornavn) {
     const regexp = /^[a-zA-ZæøåÆØÅ\.\ \-]{2,20}$/;
     const ok = regexp.test(fornavn);
     if (!ok) {
@@ -87,4 +89,10 @@ function validerPassord(passord) {
         $("#feilPassord").html("");
         return true;
     }
+}
+
+export function hentKundeId(kunde) {
+    $.post("../Bruker/HentKundeId", kunde, function (kunde) {
+        localStorage.setItem('kundeId', kunde.id);
+    });
 }

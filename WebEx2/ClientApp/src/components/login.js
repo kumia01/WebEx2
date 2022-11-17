@@ -1,6 +1,8 @@
 ﻿import React, { Component} from 'react';
 import { Button, Form, Container, Col, FormGroup, Label, Input, Row } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import $ from 'jquery';
+import { hentKundeId, kundeId } from './validering';
 
 export class Login extends Component {
     static displayName = Login.name;
@@ -25,26 +27,26 @@ export class Login extends Component {
         console.log(input["passord"]);
         if (!input["brukernavn"]) {
             formOK = false;
-            errors["brukernavn"] = "denne kan ikke være tom";
+            errors["brukernavn"] = "Denne kan ikke være tom!";
         }
 
         if (typeof input["brukernavn"] != "undefined") {
             if (!input["brukernavn"].match(/^[0-9a-zA-ZæøåÆØÅ. \-]{2,20}$/g)){
                 formOK = false;
-                errors["brukernavn"] = "bare bokstav og tall mellom 6-20";
+                errors["brukernavn"] = "Bare bokstaver og tall, mellom 6-20 tegn!";
             }
         }
 
         //passord
         if (!input["passord"]) {
             formOK = false;
-            errors["passord"] = "denne kan ikke være tom";
+            errors["passord"] = "Denne kan ikke være tom!";
         }
 
         if (typeof input["passord"] != "undefined") {
             if (!input["passord"].match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/g)){
                 formOK = false;
-                errors["passord"] = "passord må inneholde tall og bokstaver. det skal være 6 eller mer tegn";
+                errors["passord"] = "Passord må inneholde tall og bokstaver. Det skal være 6 eller fler tegn!";
             }
         }
         this.setState({ errors: errors });
@@ -52,8 +54,27 @@ export class Login extends Component {
     }
     //login kall til serveren for å starte session
     login() {
-        if (this.validering()) {
-            
+        if (this.validering() == true) {
+            let errors = {};
+            const kunde = {
+                brukernavn: this.state.input["brukernavn"],
+                passord: this.state.input["passord"]
+            }
+            $.post("../Bruker/LoggInn", kunde, function (OK) {
+                if (OK) {
+                    //SENDE BRUKER TIL HJEMSIDEN HER
+                    console.log("SIUUUUU!");
+                    hentKundeId(kunde);   
+                }
+                else {
+                    console.log("FEIL BRUKERNAVN ELLER PASSORD!")
+                    //errors["passord"] = "Feil brukernavn eller passord!";
+                    //this.setState({ errors : errors });
+                }
+            });
+                /*.fail(function (feil) {
+                    this.state.input["brukernavn"] = "Feil på server - prøv igjen senere: " + feil.responseText + " : " + feil.status + " : " + feil.statusText;
+                });*/
         }
     }
 

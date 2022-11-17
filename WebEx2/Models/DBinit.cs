@@ -19,11 +19,11 @@ namespace WebEx2.Models
                 context.Database.EnsureCreated();
                 
                 var poststed1 = new Poststeder { Postnr = "0372", Poststed = "Oslo" };
-                var poststed2 = new Poststeder { Postnr = "1900", Poststed = "Fet" };
+                //var poststed2 = new Poststeder { Postnr = "1900", Poststed = "Oslo" };
                 var aksje1 = new FlereAksjer { Ticker = "NOK", Selskap = "Norske Kroner", Pris = 20, gammelPris = 1 };
                 
                 var bruker1 = new Brukere { Fornavn = "Ole", Etternavn = "Hansen", Adresse = "Olsloveien 82", Poststed = poststed1 };
-                var bruker2 = new Brukere { Fornavn = "Jens", Etternavn = "Jenseberg", Adresse = "Svingen 2", Poststed = poststed2 };
+                var bruker2 = new Brukere { Fornavn = "Jens", Etternavn = "Jenseberg", Adresse = "Svingen 2", Poststed = poststed1 };
                 var bruker3 = new Brukere { Fornavn = "Per", Etternavn = "Persson", Adresse = "Grensen 22", Poststed = poststed1 };
 
                 var transaksjon1 = new Transaksjoner { Pris = aksje1.Pris, Volum = 200 };
